@@ -1,0 +1,108 @@
+---
+interface Props {
+  address: string;
+  phone: string;
+}
+
+const { address, phone } = Astro.props;
+---
+
+<section id="location" class="py-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+    
+    <!-- Operational Info Box Left -->
+    <div class="lg:col-span-5 flex flex-col justify-between reveal-on-scroll">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="h-[1px] w-8 bg-gold-500"></span>
+          <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Visit CAF</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-cream-50 tracking-tight mb-6">
+          Find Us & Hours
+        </h2>
+        
+        <!-- Live status block -->
+        <div class="glassmorphism p-4 rounded-xl border border-emerald-500/20 bg-emerald-950/10 mb-8 flex items-center gap-4">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          <div>
+            <p class="text-xs font-bold text-emerald-400 uppercase tracking-wider">We Are Welcoming Guests Now</p>
+            <p class="text-xs text-cream-300 mt-0.5">7:00 AM – 12:00 AM Midnight (Daily)</p>
+          </div>
+        </div>
+
+        <!-- Address List -->
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-lg bg-espresso-800 border border-cream-200/10 flex items-center justify-center shrink-0 text-gold-400 text-sm">
+              📍
+            </div>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-cream-300">Location Address</h4>
+              <p class="text-sm font-arabic font-semibold text-cream-50 mt-1">{address}</p>
+              <p class="text-xs text-cream-300 mt-1 font-arabic">البصرة، الجزائر - قرب محطة وقود الجزائر</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-lg bg-espresso-800 border border-cream-200/10 flex items-center justify-center shrink-0 text-gold-400 text-sm">
+              📞
+            </div>
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-cream-300">Inquiries & Orders</h4>
+              <p class="text-sm font-bold text-cream-50 mt-1 hover:text-gold-400 transition-colors">
+                <a href={`tel:${phone}`}>{phone}</a>
+              </p>
+              <p class="text-xs text-cream-300 mt-0.5 font-arabic">الإدارة العامة: 009647754546464</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Directions CTA -->
+      <div class="mt-12">
+        <a 
+          href="https://maps.google.com/?q=Al-Jazaer,Basra,Iraq" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-3 bg-espresso-900 hover:bg-espresso-800 text-cream-100 font-bold px-6 py-4 rounded-xl text-xs tracking-wider uppercase border border-gold-500/20 transition-all duration-300 w-full justify-center group"
+        >
+          <span>Open in Google Maps Directions</span>
+          <span class="transform group-hover:translate-x-1 transition-transform">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Side: High Contrast Clean Location Representation Card -->
+    <div class="lg:col-span-7 reveal-on-scroll delay-200">
+      <div class="w-full h-full min-h-[350px] rounded-2xl overflow-hidden border border-espresso-800 relative bg-espresso-900 group">
+        <!-- Elegant fallback customized static map vector context -->
+        <div class="absolute inset-0 bg-[radial-gradient(#2c2826_1px,transparent_1px)] bg-[size:16px_16px] flex flex-col items-center justify-center p-8 text-center">
+          <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-2xl text-gold-400 mb-4 animate-subtle-pulse">
+            ☕
+          </div>
+          <h3 class="text-xl font-bold text-cream-50 font-sans">CAF Basra - Specialty Coffee</h3>
+          <p class="text-xs text-cream-300 max-w-sm mt-2 font-arabic">
+            تقاطع الجزائر - خطوات من محطة وقود الجزائر، البصرة
+          </p>
+          <div class="mt-6 flex gap-2">
+            <span class="px-3 py-1 rounded-full text-[10px] font-medium tracking-wide bg-espresso-800 text-gold-400 border border-espresso-700">Specialty Coffee</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-medium tracking-wide bg-espresso-800 text-gold-400 border border-espresso-700">Community Hub</span>
+          </div>
+          
+          <!-- Simulated Map Layer Button -->
+          <a 
+            href="https://maps.google.com/?q=Al-Jazaer,Basra,Iraq" 
+            target="_blank" 
+            class="mt-8 text-xs font-bold text-gold-500 underline opacity-80 group-hover:opacity-100 transition-opacity"
+          >
+            Click to activate navigation map
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

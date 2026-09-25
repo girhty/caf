@@ -1,0 +1,50 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-espresso-950 border-t border-espresso-900 pt-16 pb-8 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-espresso-900">
+    
+    <!-- Branding -->
+    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+      <span class="text-xl font-extrabold tracking-widest text-cream-50 font-sans">{name}</span>
+      <span class="text-xs text-gold-400 font-arabic tracking-wide mt-1">Socially-Driven Specialty Coffee</span>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="flex flex-wrap justify-center gap-8 text-xs font-medium tracking-wider uppercase text-cream-300">
+      <a href="#hero" class="hover:text-gold-400 transition-colors">Top</a>
+      <a href="#about" class="hover:text-gold-400 transition-colors">Our Ethos</a>
+      <a href="#feed" class="hover:text-gold-400 transition-colors">Social Feed</a>
+      <a href="#location" class="hover:text-gold-400 transition-colors">Contact</a>
+    </div>
+
+    <!-- Built Status Label / Instagram Follow Trigger -->
+    <div class="flex items-center gap-3">
+      <a 
+        href="https://instagram.com/cafcafeiq" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="text-xs bg-espresso-900 hover:bg-espresso-800 text-cream-100 px-4 py-2 rounded-xl border border-cream-200/10 flex items-center gap-2 transition-colors"
+      >
+        <span>Instagram Portal</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Disclaimer & Legal Bottom -->
+  <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-cream-300 tracking-wide font-sans">
+    <p class="text-center sm:text-left">
+      &copy; {currentYear} {name} Iraq. Built for specialty coffee & community drivers.
+    </p>
+    <p class="text-center sm:text-right text-cream-300/60">
+      Authentic Google Places & Instagram Integrations.
+    </p>
+  </div>
+</footer>

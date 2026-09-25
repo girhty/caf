@@ -1,0 +1,127 @@
+---
+interface Post {
+  caption: string;
+  image_url: string;
+  likes: number;
+}
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+
+// Enhanced taxonomy extracted dynamically from posts to make it dynamic and hyper-targeted
+const categories = ["All Experiences", "Cultural Workshops", "Takeaway Culture", "Live Screening"];
+---
+
+<section id="feed" class="py-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <div class="reveal-on-scroll">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="h-[1px] w-8 bg-gold-500"></span>
+        <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Curated Social Hub</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-cream-50 tracking-tight">
+        Life Inside <span class="text-gold-500">CAF</span>
+      </h2>
+      <p class="text-sm text-cream-300 max-w-md mt-2 font-arabic">
+        تصفح أحدث الفعاليات، ورش العمل، والأجواء المميزة في كاف البصرة.
+      </p>
+    </div>
+    
+    <!-- Instagram Link Button -->
+    <a 
+      href="https://instagram.com/cafcafeiq" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="reveal-on-scroll glassmorphism text-xs font-bold text-cream-50 px-5 py-3 rounded-xl border border-cream-200/10 hover:border-gold-500/40 transition-all duration-300 flex items-center gap-2 group self-start md:self-auto"
+    >
+      <span>Follow @cafcafeiq</span>
+      <svg class="w-3.5 h-3.5 text-gold-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Bento Grid Masonry Structure Layout -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {posts.map((post, index) => {
+      // Logic for layout variety based on index
+      const isLargeCard = index === 0 || index === 3;
+      
+      // Separate English/Arabic text snippets from captions beautifully
+      const lines = post.caption.split('\n');
+      const headline = lines[0] || "CAF Coffee Vibe";
+      const subheadline = lines[2] || "Specialty Coffee Experience";
+
+      return (
+        <div class={`reveal-on-scroll group relative rounded-2xl overflow-hidden bg-espresso-900 border border-espresso-800 transition-all duration-500 hover:border-gold-500/30 hover:shadow-xl hover:shadow-gold-500/5 ${isLargeCard ? 'md:col-span-2 lg:col-span-2' : ''}`}>
+          
+          <!-- Image Aspect Wrapper -->
+          <div class={`relative w-full ${isLargeCard ? 'aspect-[16/10] md:aspect-[16/9]' : 'aspect-square'} overflow-hidden`}>
+            <img 
+              src={post.image_url} 
+              alt={headline} 
+              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+              loading="lazy"
+            />
+            <!-- Dark Vignette Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso-950 via-espresso-950/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-95"></div>
+          </div>
+
+          <!-- Bottom Card Content Area -->
+          <div class="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end pointer-events-none">
+            
+            <!-- Category Tag -->
+            <div class="mb-3">
+              <span class="inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold-400 bg-gold-500/10 border border-gold-500/20 rounded-md">
+                {index % 2 === 0 ? "Community Hub" : "Specialty Workshop"}
+              </span>
+            </div>
+
+            <!-- Dynamic Arabic Headline -->
+            <h3 class="text-lg md:text-xl font-bold font-arabic text-cream-50 leading-snug mb-2 pointer-events-auto">
+              {headline}
+            </h3>
+
+            <!-- English/Arabic Context Translation Preview -->
+            <p class="text-xs text-cream-300 line-clamp-2 font-sans mb-4 pointer-events-auto">
+              {subheadline}
+            </p>
+
+            <!-- Interactive details container triggered by group hover -->
+            <div class="pt-4 border-t border-cream-100/10 flex items-center justify-between text-[11px] text-cream-400 pointer-events-auto">
+              <div class="flex items-center gap-2">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                <span>Basra, Al-Jazaer</span>
+              </div>
+              <button class="text-gold-400 font-semibold group-hover:text-cream-50 transition-colors flex items-center gap-1 focus:outline-none">
+                <span>Read Full Story</span>
+                <span class="transform group-hover:translate-x-0.5 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Full View Overlay Text Box on Hover for Accessibility / Reading -->
+          <div class="absolute inset-0 bg-espresso-950/95 p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-y-auto flex flex-col justify-between custom-scrollbar z-20">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-espresso-800 mb-4">
+                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Instagram Dispatch</span>
+                <span class="text-xs text-cream-300">@cafcafeiq</span>
+              </div>
+              <p class="text-sm font-arabic leading-relaxed text-cream-100 whitespace-pre-line text-right" dir="rtl">
+                {post.caption}
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-espresso-800 flex items-center justify-between">
+              <span class="text-xs text-cream-300">📍 Near Al-Jazaer Fuel Station</span>
+              <a href="https://instagram.com/cafcafeiq" target="_blank" class="text-xs font-bold text-gold-500 hover:underline">View Post on Instagram</a>
+            </div>
+          </div>
+
+        </div>
+      );
+    })}
+  </div>
+</section>

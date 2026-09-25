@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import StatsBadge from '../components/StatsBadge.astro';
+import BentoGallery from '../components/BentoGallery.astro';
+import Events from '../components/Events.astro';
+import LocationHours from '../components/LocationHours.astro';
+import Footer from '../components/Footer.astro';
+
+// Full parsed dataset hardcoded as premium high-fidelity static asset source data
+const data = {
+  "google_places": {
+    "name": "CAF",
+    "rating": 3.6,
+    "user_ratings_total": 49,
+    "formatted_address": "GR6C+J66, Basrah, Basra Governorate",
+    "formatted_phone_number": "0780 555 5441",
+    "photos": [
+      "https://lh3.googleusercontent.com/grass-cs/ACvplmPdR4pAtkcKS-h5oLeVP8_V6QP_veUkmFl0Y9x-CTn2sSSeYSIif9DQCLUjZRFr1pVDd0guqhN4Kh12Du3T3t0Qgw0Lmzlwo0433zkVTxQyt9vA8rVUCCeHiI-k2_vKgiGx7g8HDUaLMyI=w600-h450-p-k-no"
+    ]
+  },
+  "instagram": {
+    "username": "cafcafeiq",
+    "name": "CAF",
+    "biography": "للتواصل مع ادارة كاف العراق :: 009647754546464\nSocially-Driven Specialty Coffee\n📍Basra Al Jazaer",
+    "followers_count": 36009,
+    "profile_pic": "https://scontent.cdninstagram.com/v/t51.82787-19/632035231_17916582354282882_5896975276344725997_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=2u0qJfLT2wcQ7kNvwHR2TnG&_nc_oc=Adqfjf33sC4nltmhbTZdmabThiuiU_cWy6iczf4t20fH2e3h3-U9feemgQ_RV94T0Mc&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=vUDvHFX5rhTxcD2c4GygPA&_nc_ss=7ca8c&oh=00_AQJnZtlmCVVWLLHGbCjs3CP3fkN_8I9UYdumn_1sDflQ5w&oe=6ABC6767",
+    "posts": [
+      {
+        "caption": "خليجي 27 على شاشات كاف الكبيرة 🤍 \n\nنستقبلكم ابتداءً من اليوم لمتابعة مباريات كأس الخليج بدورته الـ27\nمع قهوتكم وأجواء كاف 😍 \n\nللتواصل والاستفسار:\n07805555441\n\nالعنوان: البصرة، الجزائر - قرب محطة وقود الجزائر\n\nأوقات العمل: نستقبلكم يومياً، من الساعة 7:00 صباحاً حتى 12:00 منتصف الليل\n\nGulf Cup 27 on CAF’s big screens 🤍 \n\nStarting today, join us at CAF to catch the 27th Gulf Cup matches,\nwith your favorite coffee and the CAF atmosphere.\n\nConnect with us:\n07805555441\n\nWhere we are:\nAl-Jazaer, Basra. Steps away from the fuel station\n\nOur hours:\nCatch us every day from 7:00 AM until 12:00 AM\n\n#CAF #كاف",
+        "image_url": "https://scontent.cdninstagram.com/v/t51.82787-15/819376103_17950775043282882_5392617318230198260_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zzwhtQEq6fcQ7kNvwFCkjnV&_nc_oc=Adr3dwHN3KjKHM4oppx0jsEPpzRjHzipSp7E7kryfWEAp1S3YaKoagD98q5OP3W6VzM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w85LUrnqYngY7mnOL7leQQ&_nc_ss=7ca8c&oh=00_AQJmh4lBB7tnM014X2RsBY_Xj1VVYA5lNnMxR26i5aGLVw&oe=6ABC53C6",
+        "likes": 0
+      },
+      {
+        "caption": "كاف وياك بكل مكان 🤍 \nعلبنا الجديدة للسفري صارت جاهزة، بتصميم جديد لمشروباتك المفضلة.\n\nللتواصل والاستفسار:\n07805555441\nالعنوان: البصرة، الجزائر - قرب محطة وقود الجزائر\nأوقات العمل: نستقبلكم يومياً، من الساعة 7:00 صباحاً حتى 12:00 منتصف الليل\n\nCAF with you, wherever you go🤍 \nOur new takeaway cups are ready, featuring a fresh new design for your favorite drinks.\n\nConnect with us:\n07805555441\n\nWhere we are:\nAl-Jazaer, Basra. Steps away from the fuel station\nOur hours:\nCatch us every day from 7:00 AM until 12:00 AM\n\n#CAF #كاف",
+        "image_url": "https://scontent.cdninstagram.com/v/t51.82787-15/806688999_17950634586282882_3572205524888747895_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=l_TX6pb_NoEQ7kNvwEAkxk9&_nc_oc=AdrLDa6mf-P6xeKZWgH5zG2j3L5FTVtlcvgpgBbMo6EnGKXa6QXaBOpvZaMgAQHRWTM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w85LUrnqYngY7mnOL7leQQ&_nc_ss=7ca8c&oh=00_AQJ9RlISm4XnsjN1QApWCx60t9m1pWILCXzdm-b29sagNg&oe=6ABC68BF",
+        "likes": 0
+      },
+      {
+        "caption": "تنسيق الورد ، الفصفصة، وأجواء الثمانينات 🌷 \nهذه الجمعة، 25/9، نلتقي في كاف لورشة تنسيق الورد والفصفصة، بأجواء مستوحاة من الثمانينات وتفاصيلها المميزة.\nكل مشترك راح ينسّق باقته الخاصة ويأخذها وياه بعد الورشة. 🤍\n \nولا تنسون لمستكم الخاصة بالثيم؛ اختاروا إطلالتكم بروح الثمانينات وخلوكم جزء من الأجواء.\nالتسجيل من خلال الرابط المثبت بالبايو.\nللتواصل والاستفسار:\n07805555441\nالعنوان: البصرة، الجزائر - قرب محطة وقود الجزائر\nأوقات العمل: نستقبلكم يومياً، من الساعة 7:00 صباحاً حتى 12:00 منتصف الليل\n\nFlower Arranging, Foxtail & 80s Vibes 🌷 \nThis Friday, September 25, we’re meeting at CAF for a flower arranging and foxtail workshop, inspired by the spirit and details of the 80s.\n\nEach participant will create their own bouquet and take it home after the workshop. 🤍 \nAnd don’t forget your own touch to the theme; dress in your favorite 80s-inspired look and be part of the atmosphere.\nRegistration is available through the link in our bio\n.\nFor inquiries:\n07805555441\n\nWhere we are:\nAl-Jazaer, Basra. Steps away from the fuel station\nOur hours:\nCatch us every day from 7:00 AM until 12:00 AM\n\n#CAF #كاف",
+        "image_url": "https://scontent.cdninstagram.com/v/t51.82787-15/818062804_17950394787282882_4404288722040919754_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=yPAPrZC9OsYQ7kNvwH15VOM&_nc_oc=AdqLN-Yu5Q5wYeskAkgaCcZzuAVv3A1HbfWZUhKNMJqL83sjYaiMqXs5aNFPDqsXrvA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w85LUrnqYngY7mnOL7leQQ&_nc_ss=7ca8c&oh=00_AQLX3QmATsOOCVCUxWloXEC-bWQv0-SARMCtbEX0fdZaZQ&oe=6ABC63AF",
+        "likes": 0
+      },
+      {
+        "caption": "أمسية رحنا بيها لليابان 😍🇯🇵\n\nشنو رأيكم بالأجواء؟ 👀 \n\nللتواصل والاستفسار:\n07805555441\n\nالعنوان: البصرة، الجزائر - قرب محطة وقود الجزائر\nأوقات العمل: نستقبلكم يومياً، من الساعة 7:00 صباحاً حتى 12:00 منتصف الليل\n#CAF #كاف\n\nAn evening that took us to Japan 😍🇯🇵\n\nWhat did you think of the vibes? 👀\n\nConnect with us:\n07805555441\n\nWhere we are:\nAl-Jazaer, Basra. Steps away from the fuel station\nOur hours:\nCatch us every day from 7:00 AM until 12:00 AM\n\n#CAF #كاف",
+        "image_url": "https://scontent.cdninstagram.com/v/t51.82787-15/799783124_17950346568282882_664558979727862658_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=gb8sBZvepREQ7kNvwHFmRnU&_nc_oc=Adp9Wl3wXOvNK5vF_INtVg6VWPD4FKM-KlXDbOxttZsPB79uP9bTNGQYZe8Ga9SX5wM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w85LUrnqYngY7mnOL7leQQ&_nc_ss=7ca8c&oh=00_AQIHo9weAQDT3UM9pXth2qxpFmTkduOpHARYjdgrKdqLNQ&oe=6ABC63DD",
+        "likes": 0
+      },
+      {
+        "caption": "اليابان كانت أقرب مما نتخيّل 🇯🇵🤍 \n\nنقلنا أجواء اليابان إلى البصرة، في أمسية فنية بالتعاون مع Art Space، عشنا خلالها تفاصيل من الفن والثقافة اليابانية.\n\nمن صناعة الماتشا إلى فن Kinu Saiga، كانت أمسية مختلفة بكل تفاصيلها.\n\nللتواصل والاستفسار:\n07805555441\n\nالعنوان: البصرة، الجزائر - قرب محطة وقود الجزائر\n\nأوقات العمل: نستقبلكم يومياً، من الساعة 7:00 صباحاً حتى 12:00 منتصف الليل\n\nJapan was closer than we imagined 🇯🇵🤍 \n\nWe brought the spirit of Japan to Basra through an artistic evening in collaboration with Art Space, exploring details of Japanese art and culture.\n\nFrom Matcha Making to Kinu Saiga, it was an evening filled with unique experiences and beautiful details.\n\nConnect with us:\n07805555441\n\nWhere we are:\nAl-Jazaer, Basra. Steps away from the fuel station\n\nOur hours:\nCatch us every day from 7:00 AM until 12:00 AM\n#CAF #كاف",
+        "image_url": "https://scontent.cdninstagram.com/v/t51.71878-15/794394949_1086346394388992_4393230299464927015_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=WRPHRv2PuSEQ7kNvwEi5CuB&_nc_oc=Adp__L1c1SY7MJYKBVV_f_sK69J5r6G0ktGBXPREP-rxiSfIw1Q690ZtLbtvMP2a7iM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w85LUrnqYngY7mnOL7leQQ&_nc_ss=7ca8c&oh=00_AQKb3azLnb6qU9pwAs_a6ziRtBoNszHkzx0q1L2wsH4_qg&oe=6ABC6BD1",
+        "likes": 0
+      }
+    ]
+  }
+};
+---
+
+<Layout 
+  title={data.google_places.name} 
+  description={data.instagram.biography}
+>
+  <!-- Global Navigation Header Bar -->
+  <Navbar 
+    username={data.instagram.username} 
+    profilePic={data.instagram.profile_pic} 
+  />
+
+  <main class="relative z-10">
+    <!-- Hero Block Showcase -->
+    <Hero 
+      name={data.google_places.name}
+      biography={data.instagram.biography}
+      followers={data.instagram.followers_count}
+      rating={data.google_places.rating}
+      reviewsCount={data.google_places.user_ratings_total}
+      profilePic={data.instagram.profile_pic}
+      featuredImage={data.instagram.posts[1].image_url}
+    />
+
+    <!-- Quick Stats Metric Alignment -->
+    <StatsBadge 
+      rating={data.google_places.rating}
+      totalRatings={data.google_places.user_ratings_total}
+      username={data.instagram.username}
+    />
+
+    <!-- Infinite Text Marquee Banner for modern motion flow -->
+    <div class="bg-gold-500 py-3 overflow-hidden whitespace-nowrap select-none border-y border-gold-600 flex">
+      <div class="animate-marquee flex text-espresso-950 font-bold tracking-widest text-xs uppercase gap-8">
+        <span>SOCIALLY-DRIVEN SPECIALTY COFFEE HUB • BASRA AL JAZAER • CAF CAFE IQ • </span>
+        <span>SOCIALLY-DRIVEN SPECIALTY COFFEE HUB • BASRA AL JAZAER • CAF CAFE IQ • </span>
+        <span>SOCIALLY-DRIVEN SPECIALTY COFFEE HUB • BASRA AL JAZAER • CAF CAFE IQ • </span>
+        <span>SOCIALLY-DRIVEN SPECIALTY COFFEE HUB • BASRA AL JAZAER • CAF CAFE IQ • </span>
+      </div>
+    </div>
+
+    <!-- Interactive Bento Layout Grid -->
+    <BentoGallery posts={data.instagram.posts} />
+
+    <!-- Community Workshops Section -->
+    <Events />
+
+    <!-- Location & Live Status Map Block -->
+    <LocationHours 
+      address={data.google_places.formatted_address}
+      phone={data.google_places.formatted_phone_number}
+    />
+  </main>
+
+  <!-- Complete Site Footer Layout -->
+  <Footer name={data.google_places.name} />
+</Layout>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  username: string;
+  profilePic: string;
+}
+
+const { username, profilePic } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:px-8">
+  <nav class="max-w-7xl mx-auto glassmorphism rounded-full px-4 md:px-6 py-3 flex items-center justify-between transition-all duration-300 hover:border-gold-500/20">
+    <!-- Brand / Logo -->
+    <a href="#" class="flex items-center gap-3 group focus:outline-none">
+      <div class="relative w-9 h-9 rounded-full overflow-hidden border border-gold-500/30 group-hover:scale-105 transition-transform duration-300">
+        <img src={profilePic} alt="CAF Specialty Coffee Logo" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm font-bold tracking-widest text-cream-50 font-sans">CAF</span>
+        <span class="text-[10px] text-gold-400 font-arabic tracking-wide -mt-0.5">كاف العراق</span>
+      </div>
+    </a>
+
+    <!-- Navigation links -->
+    <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-wider uppercase text-cream-200">
+      <a href="#about" class="hover:text-gold-400 transition-colors duration-200">Our Story</a>
+      <a href="#feed" class="hover:text-gold-400 transition-colors duration-200">Instagram Feed</a>
+      <a href="#events" class="hover:text-gold-400 transition-colors duration-200">Community Workshops</a>
+      <a href="#location" class="hover:text-gold-400 transition-colors duration-200">Hours & Direction</a>
+    </div>
+
+    <!-- Live & Contact CTA -->
+    <div class="flex items-center gap-3">
+      <!-- Live Status Indicator -->
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span class="text-[11px] font-medium tracking-wide text-emerald-400 uppercase hidden sm:inline">Open Now</span>
+      </div>
+
+      <a 
+        href="tel:07805555441" 
+        class="bg-gold-500 hover:bg-gold-400 text-espresso-950 font-bold px-4 py-1.5 rounded-full text-xs tracking-wider transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 active:scale-95 text-center"
+      >
+        CALL CAF
+      </a>
+    </div>
+  </nav>
+</header>

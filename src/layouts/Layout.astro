@@ -1,0 +1,105 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+// Profile pic from data to use as branding fallback
+const profilePic = "https://scontent.cdninstagram.com/v/t51.82787-19/632035231_17916582354282882_5896975276344725997_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=2u0qJfLT2wcQ7kNvwHR2TnG&_nc_oc=Adqfjf33sC4nltmhbTZdmabThiuiU_cWy6iczf4t20fH2e3h3-U9feemgQ_RV94T0Mc&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=vUDvHFX5rhTxcD2c4GygPA&_nc_ss=7ca8c&oh=00_AQJnZtlmCVVWLLHGbCjs3CP3fkN_8I9UYdumn_1sDflQ5w&oe=6ABC6767";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-espresso-950 text-cream-100 selection:bg-gold-500 selection:text-espresso-950">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/jpeg" href={profilePic} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Socially-Driven Specialty Coffee</title>
+    <meta name="description" content={description} />
+    
+    <!-- Google Fonts: Plus Jakarta Sans for English, Cairo for modern Arabic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="overflow-x-hidden antialiased font-sans">
+    <!-- Premium Ambient Lighting Elements -->
+    <div class="pointer-events-none fixed top-0 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-gold-500/5 blur-[120px] z-0"></div>
+    <div class="pointer-events-none fixed bottom-1/4 right-0 h-[600px] w-[600px] rounded-full bg-gold-600/5 blur-[160px] z-0"></div>
+
+    <slot />
+
+    <script>
+      // Scroll Reveal Interaction logic
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+
+    <style is:global>
+      /* Smooth reveal framework */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+      }
+      .reveal-on-scroll.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .delay-100 { transition-delay: 100ms; }
+      .delay-200 { transition-delay: 200ms; }
+      .delay-300 { transition-delay: 300ms; }
+      .delay-400 { transition-delay: 400ms; }
+
+      /* Frosted Glass Custom Style */
+      .glassmorphism {
+        background: rgba(18, 16, 15, 0.75);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(226, 184, 103, 0.08);
+      }
+      
+      .glassmorphism-light {
+        background: rgba(250, 248, 245, 0.03);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(250, 248, 245, 0.05);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #090808;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2C2826;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C99A45;
+      }
+    </style>
+  </body>
+</html>

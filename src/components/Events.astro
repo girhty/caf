@@ -1,0 +1,67 @@
+---
+// Curated list based directly on the dataset's high-fidelity captions
+const curatedEvents = [
+  {
+    title: "Gulf Cup 27 Broadcasts",
+    titleAr: "خليجي ٢٧ على شاشات كاف الكبيرة",
+    description: "Catch the thrilling matches of the 27th Gulf Cup live on our large screens, combined with premium coffee and community vibes.",
+    date: "Ongoing Season",
+    icon: "⚽"
+  },
+  {
+    title: "80s Flower Arranging Workshop",
+    titleAr: "ورشة تنسيق الورد والفصفصة",
+    description: "An immersive retro creative session where participants curate custom bouquets accompanied by nostalgic 1980s music and styling.",
+    date: "Every Month",
+    icon: "🌷"
+  },
+  {
+    title: "Japanese Cultural Evenings",
+    titleAr: "أمسية الفن والثقافة اليابانية",
+    description: "In collaboration with Art Space, exploring traditional Matcha making and beautiful Kinu Saiga artwork in the heart of Basra.",
+    date: "Seasonal",
+    icon: "🇯🇵"
+  }
+];
+---
+
+<section id="events" class="py-24 bg-espresso-900/60 relative overflow-hidden border-y border-espresso-800">
+  <div class="absolute inset-0 bg-gradient-to-b from-espresso-950/20 to-transparent"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+      <span class="text-xs font-bold tracking-widest text-gold-500 uppercase inline-block mb-2">More than Coffee</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-cream-50 tracking-tight font-sans">
+        Socially-Driven Experiences
+      </h2>
+      <p class="text-sm text-cream-300 font-arabic mt-3">
+        فعاليات تجمع بين الفن، الثقافة والمجتمع لتجربة فريدة في البصرة.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {curatedEvents.map((event, index) => (
+        <div class="reveal-on-scroll glassmorphism p-8 rounded-2xl transition-all duration-300 hover:border-gold-500/30 group relative">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+            {event.icon}
+          </div>
+          
+          <span class="text-[10px] font-bold text-gold-400 uppercase tracking-widest block mb-1">{event.date}</span>
+          <h3 class="text-lg font-bold text-cream-50 font-sans group-hover:text-gold-400 transition-colors">
+            {event.title}
+          </h3>
+          <h4 class="text-md font-bold font-arabic text-cream-200 mt-1 mb-4">
+            {event.titleAr}
+          </h4>
+          <p class="text-xs text-cream-300 leading-relaxed font-sans">
+            {event.description}
+          </p>
+
+          <div class="absolute bottom-4 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-semibold text-gold-400">
+            Join In →
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
